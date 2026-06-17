@@ -17,7 +17,8 @@ function isTokenValid(token) {
     if (token) {
         const decoded = jwtDecode(token);
         let currentDate = new Date();
-        if (decoded.exp * 1000 < currentDate.getTime()) {
+        // TODO: Set this back to 1000
+        if ((decoded.exp + 60) * 1000 < currentDate.getTime()) {
             console.log("Token expired.");
             return false;
         }

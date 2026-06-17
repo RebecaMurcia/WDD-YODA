@@ -25,4 +25,10 @@ export default defineConfig([
       "no-console": "warn",
     },
   },
+  {
+    files: ["./src/js/auth.mjs"],
+    rules: {
+      "no-console": "off"
+    }
+  }
 ]);
