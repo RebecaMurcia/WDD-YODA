@@ -33,3 +33,28 @@ export async function checkout(payload) {
   const response = await fetch(baseURL + "checkout", options);
   return convertToJson(response);
 }
+
+export async function loginRequest(creds) {
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(creds),
+  };
+  const response = await fetch(baseURL + "login", options);
+  const data = await convertToJson(response);
+  return data.accessToken;
+}
+
+export async function getOrders(token) {
+  const options = {
+    method: "GET",
+    headers: {
+      "Authorization": `Bearer ${token}`,
+    },
+  };
+  const response = await fetch(baseURL + "orders", options);
+  const data = await convertToJson(response);
+  return data;
+}
